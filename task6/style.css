@@ -1,0 +1,27 @@
+p {
+  position: relative;
+  z-index: 1;
+  padding: 10px;
+}
+
+p::before {
+  z-index: -1;
+  inset: 0;
+  content: "";
+  position: absolute;
+  border-radius: 15px;
+}
+
+.bg1::before {
+  background: url(../assets/img.webp);
+  opacity: 0.5;
+}
+.bg2::before {
+  opacity: 0.9;
+
+  background: url(../assets/img.webp);
+}
+
+.bg2 {
+  color: #fff;
+}

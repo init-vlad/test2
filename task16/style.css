@@ -1,0 +1,26 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  overflow-x: clip;
+  font-family: monospace;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.card {
+  padding: 8px 12px;
+  border: 1px solid #cdcdcd;
+  display: grid;
+  align-content: space-between;
+}

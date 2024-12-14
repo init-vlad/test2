@@ -1,0 +1,54 @@
+html,
+body {
+  height: 100%;
+  background: rgb(29, 29, 29);
+  color: #fff;
+}
+
+img {
+  border: 1px solid transparent;
+  transition: all 500ms;
+}
+
+img:hover {
+  border-color: #fff;
+}
+
+.flex {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  padding-right: 20px;
+  width: fit-content;
+}
+
+svg {
+  transition: all 300ms;
+  width: 18px;
+  height: auto;
+}
+
+a:hover svg {
+  transform: translateX(2px);
+}
+
+.hover-me {
+  transition: all 500ms ease-in-out;
+  transform: scale(0.5);
+  background: #fff;
+  border-radius: 100%;
+  height: 100px;
+  width: 100px;
+}
+
+.hover-me:hover {
+  transform: scale(1);
+  transform: rotateZ(900deg) rotateY(500deg);
+  border-radius: 0%;
+}
