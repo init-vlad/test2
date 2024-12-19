@@ -26,7 +26,8 @@
       <button data-op="*" id="mul">*</button>
       <button data-op="/" id="div">/</button>
       <button id="res">=</button>
-      <button id="sqr">x^2</button>
+      <button id="pow">x^2</button>
+      <button id="sqr">x^1/2</button>
     </div>
   </div>
 

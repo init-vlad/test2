@@ -61,3 +61,8 @@ input {
   grid-column: 4;
   grid-row: 7;
 }
+
+#pow {
+  grid-column: 4;
+  grid-row: 8;
+}

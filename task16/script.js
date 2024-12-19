@@ -1,77 +1,26 @@
-const changeContentToPosts = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-  const data = await res.json();
+let links = document.querySelectorAll("header a");
 
-  return () => {
-    const grid = document.querySelector(".grid");
-    const content = data
-      .map(
-        (d) => `<div class="card">
-      <div class="title">Title: ${d.title}</div>
-      <div>Body: ${d.body}</div>
-    </div>`
-      )
-      .join("");
+links.forEach((link) => {
+  link.addEventListener("click", async function (e) {
+    e.preventDefault();
+    let href = this.href;
+    let data = await fetch(href);
+    document.querySelector("#container").innerHTML = await data.text();
 
-    grid.innerHTML = content;
-  };
-};
-
-const changeContentToPhotos = async () => {
-  const res = await fetch(
-    "https://jsonplaceholder.typicode.com/photos?_page=1&_limit=4"
-  );
-
-  const data = await res.json();
-
-  return () => {
-    const grid = document.querySelector(".grid");
-    const content = data
-      .map(
-        (d) => `<div class="card">
-                  <div class="title">Title: ${d.title}</div>
-                  <img src="${d.thumbnailUrl}" />
-                </div>`
-      )
-      .join("");
-
-    grid.innerHTML = content;
-  };
-};
-
-document.addEventListener("DOMContentLoaded", () => {
-  (async () => {
-    const setPostsContent = await changeContentToPosts();
-    const setPhotosContent = await changeContentToPhotos();
-
-    document.addEventListener("click", (e) => {
-      if (!(e.target instanceof Element)) return;
-
-      const link = e.target.closest("a");
-      if (!link) return;
-
-      e.preventDefault();
-
-      if (link.classList.contains("photos")) {
-        setPhotosContent();
-      } else if (link.classList.contains("about")) {
-        (async () => {
-          const res = await fetch("./about.php");
-          const data = await res.text();
-
-          document.querySelector("#root").innerHTML = data;
-          console.log(123);
-        })();
-      } else {
-        (async () => {
-          const res = await fetch("./index.php");
-          const data = await res.text();
-
-          document.querySelector("#root").innerHTML = data;
-          console.log(123);
-        })();
-        setPostsContent();
-      }
-    });
-  })();
+    let hash =
+      this.getAttribute("data-hash") || href.split(".")[0].split("/").pop();
+    window.location.hash = hash;
+  });
 });
+
+async function start() {
+  let hash = window.location.hash.substr(1) || "main";
+
+  let data = await fetch(`${hash}.html`);
+  console.log(data);
+  document.querySelector("#container").innerHTML = await data.text();
+}
+
+window.addEventListener("hashchange", start);
+
+start();
