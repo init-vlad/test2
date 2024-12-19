@@ -1,0 +1,15 @@
+{
+  "name": "task/25",
+  "description": "task 25",
+  "autoload": {
+    "psr-4": {
+      "Photos\\": "Photos/"
+    }
+  },
+  "authors": [
+    {
+      "name": "me"
+    }
+  ],
+  "require": {}
+}
